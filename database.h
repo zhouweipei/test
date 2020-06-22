@@ -5,6 +5,7 @@
 #include <QSqlQuery>
 #include <QString>
 #include <qdebug.h>
+
 class Database
 {
 public:

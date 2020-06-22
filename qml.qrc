@@ -31,5 +31,7 @@
         <file>Loginpage.qml</file>
         <file>Signin.qml</file>
         <file>Signup.qml</file>
+        <file>Businesspage.qml</file>
+        <file>Personalpage.qml</file>
     </qresource>
 </RCC>

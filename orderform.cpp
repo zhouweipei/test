@@ -1,6 +1,10 @@
 #include "orderform.h"
 
-orderform::orderform()
+Orderform::Orderform(QObject *parent)
+    :QObject(parent)
 {
 
 }
+Orderform::~Orderform()
+{}
+

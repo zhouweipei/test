@@ -46,6 +46,7 @@ Item {
                 if(user.compare_login(textEdit2.text,textEdit.text,textEdit1.text)){
                     console.log("登录成功")
                     console.log(user.username)
+                    loginpage.push("Businesspage.qml")
                 }else{
                     console.log("密码错误")
 

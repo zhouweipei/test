@@ -43,7 +43,7 @@ Item {
         text: qsTr("注册")
         onClicked: {
 
-            if(user.compare_usermessage(username.text))
+            if(user.isSignup(username.text))
             {
                 console.log("用户已存在")
 

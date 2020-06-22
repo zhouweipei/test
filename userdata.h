@@ -2,9 +2,9 @@
 #define USERDATA_H
 #include <QObject>
 #include <QString>
-#include <database.h>
 #include <QSqlDatabase>
 #include <qdebug.h>
+#include "database.h"
 class Userdata :public QObject
 {
     Q_OBJECT
@@ -24,19 +24,18 @@ public:
     QString address() const;
     void setAddress(const QString address);
     Q_INVOKABLE void registInfo(QString username,QString telenum,QString password);
-    Q_INVOKABLE bool compare_usermessage(QString username);
     Q_INVOKABLE bool compare_login(QString username, QString telenum ,QString password);
     Q_INVOKABLE bool isSignup(QString username);
-    Q_INVOKABLE bool islogin();
+    Q_INVOKABLE void change_password(QString telenum,QString newpassword);
 
 private:
-    Database dbopen;
     Database registopen;
-    QSqlDatabase userdata,user_registdata;
+    QSqlDatabase user_registdata;
     QString m_username;
     QString m_telenum;
     QString m_password;
     QString m_address;
+    bool isLogin=false;
 
 
 

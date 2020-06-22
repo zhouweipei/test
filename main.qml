@@ -3,10 +3,18 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 import QtQuick.Window 2.2
 import Userdata 1.0
+import Business 1.0
 ApplicationWindow {
     property alias user: user
+    property alias business: business
     Userdata{
         id:user
+    }
+    Business{
+        id:business
+        Component.onCompleted: {
+            business.getblist()
+        }
     }
     visible: true
     width: 400
@@ -39,7 +47,7 @@ ApplicationWindow {
         }
         Component{
             id:storeModel
-            StoreModel{}
+            Test1{}
         }
 //        Component{
 //            id:testmodel
@@ -50,16 +58,20 @@ ApplicationWindow {
             color: "blue"
 
         }
-        StackView{
-            id:loginpage
-            initialItem: login
-        }
-        Component{
-            id:login
-            Loginpage{
-            }
+        Rectangle{
 
-}
+
+            StackView{
+                id:loginpage
+                initialItem: login
+            }
+            Component{
+                id:login
+                Loginpage{
+                }
+
+            }
+        }
     }
 
 }
