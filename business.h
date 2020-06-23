@@ -5,7 +5,6 @@
 #include <QObject>
 #include "database.h"
 #include <qdebug.h>
-using namespace std;
 class Business :public QObject
 {
     Q_OBJECT

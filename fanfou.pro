@@ -18,6 +18,7 @@ SOURCES += \
         business.cpp \
         database.cpp \
         main.cpp \
+        menu.cpp \
         orderform.cpp \
         userdata.cpp
 
@@ -39,5 +40,6 @@ DISTFILES +=
 HEADERS += \
     business.h \
     database.h \
+    menu.h \
     orderform.h \
     userdata.h
