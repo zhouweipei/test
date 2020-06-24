@@ -1,35 +1,13 @@
 import QtQuick 2.0
-
 import QtQuick.Controls 2.1
-
-
-
 Rectangle {
-
     id: frmWindow
-
     property alias listModel: listModel
-
-
-
     ListModel{
-
         id:listModel
-
-
-
     }
-
-
-
-
-
     Component {
-
         id: dragDelegate
-
-
-
         Rectangle {
 
             id: content
@@ -133,26 +111,15 @@ Rectangle {
             }
 
         }
-
     }
-
     ListView {
-
         id: view
-
         anchors { fill: parent; margins: 2 }
-
         model:StoreList{}
-
         delegate: dragDelegate
-
         spacing: 10
-
         cacheBuffer: 50
 
     }
-
-
-
 }
 

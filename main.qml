@@ -58,20 +58,11 @@ ApplicationWindow {
             color: "blue"
 
         }
-        Rectangle{
-
-
-            StackView{
-                id:loginpage
-                initialItem: login
-            }
-            Component{
-                id:login
-                Loginpage{
-                }
-
-            }
+        StackView{
+            id:login
+            initialItem: "Loginpage.qml"
         }
+
     }
 
 }

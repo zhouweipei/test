@@ -18,13 +18,6 @@ Item {
             font.pixelSize: 12
         }
         TextField {
-            id: business_password
-            width: 432
-            height: 36
-            placeholderText: qsTr("请输入密码")
-            font.pixelSize: 12
-        }
-        TextField {
             id: business_info
             width: 432
             height: 36
