@@ -2,8 +2,35 @@ import QtQuick 2.0
 import QtQuick.Controls 2.1
 import Business 1.0
 Rectangle {
+    property bool refreshFlag: false
     Business{
         id:business
+    }
+    Rectangle{
+        width: parent.width
+        height: -view.contentY
+        color: "cyan"
+        Label{
+            anchors.centerIn: parent
+            text:"下拉刷新"
+            visible: view.contentYr
+        }
+    }
+
+    BusyIndicator{
+        id:busy
+        z:4
+        running: false
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: parent.height/3.
+        Timer{
+            interval: 2000
+            running: busy.running
+            onTriggered: {
+                busy.running = false
+            }
+        }
     }
     Component {
         id: dragDelegate
@@ -65,6 +92,18 @@ Rectangle {
         delegate: dragDelegate
         spacing: 10
         cacheBuffer: 50
+        onContentYChanged: {
+            if(-contentY > 40){
+                refreshFlag = true
+            }
+        }
+        onMovementEnded: {
+            if(refreshFlag){
+                refreshFlag = false
+                busy.running = true
+            }
+            business.getblist()
+        }
     }
     Connections{
         target: business

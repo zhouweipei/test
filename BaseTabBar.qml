@@ -12,6 +12,7 @@ TabBar{
     ListModel{
         id:myModel
     }
+
     Repeater{
         id:repeater
         model: myModel

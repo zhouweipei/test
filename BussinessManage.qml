@@ -5,6 +5,7 @@ import QtQuick.Dialogs 1.3
 import Business 1.0
 
 Item {
+    id:businessManage
     Business{
         id:business
     }
@@ -12,7 +13,10 @@ Item {
         id:toolbar
         ToolButton {
             text: qsTr("‹")
-            onClicked: login.pop()
+            onClicked: {
+                login.pop()
+
+            }
         }
     }
     ColumnLayout{
@@ -77,7 +81,7 @@ Item {
                     text: qsTr("添加商铺")
                     onClicked: {
                         business.addBusiness(businessname.text,fileDialog.fileUrl,business_info.text)
-                        console.log("注册成功")
+                        business.getblist()
                     }
                 }
             }
@@ -116,7 +120,11 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 MouseArea{
                     property point clickPos: "0,0"
-
+                    onClicked: {
+                        console.log(model.modelData.name)
+                        login.push("MenuManage.qml",{businessName:model.modelData.name})
+                      //  model.modelData[1].name
+                    }
                     anchors.fill: parent
                     onPressed: {
                         clickPos  = Qt.point(mouse.x,mouse.y);

@@ -35,5 +35,6 @@
         <file>Personalpage.qml</file>
         <file>AdminLogin.qml</file>
         <file>BussinessManage.qml</file>
+        <file>MenuManage.qml</file>
     </qresource>
 </RCC>

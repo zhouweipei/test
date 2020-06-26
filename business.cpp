@@ -81,7 +81,7 @@ void Business::remove(QString name)
     business_data=businssopen.initDatabase("business_data.db");
     QSqlQuery query(business_data);
     query.exec(del);
-    qDebug()<<del;
+    getblist();
 }
 void Business::addmenu(QString Bname ,QString name, QString ingredients, QString price)
 {
@@ -113,7 +113,7 @@ QList<QObject*> Business::getblist()
        m_image=businessdata.value(3).toString();
        QObject* data=new Business(business_name,m_image,brief_introduction);
        businessList.append(data);
-       qDebug()<<business_name<<brief_introduction<<m_image;
+      // qDebug()<<business_name<<brief_introduction<<m_image;
     }
     businessdata.exec();
     emit signalbList(businessList);

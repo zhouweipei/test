@@ -60,7 +60,11 @@ ApplicationWindow {
         }
         StackView{
             id:login
-            initialItem: "Loginpage.qml"
+            initialItem: loginPage
+        }
+        Component{
+            id:loginPage
+            Loginpage{}
         }
 
     }

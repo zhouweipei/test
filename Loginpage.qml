@@ -2,22 +2,38 @@ import QtQuick 2.4
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 import QtQuick.Dialogs 1.2
+import QtGraphicalEffects 1.0
 Page{
+    property alias picImage: profilePic.source
     id:loginpage
     Rectangle {
+        anchors.horizontalCenter: parent.horizontalCenter
         id: iconRect
-        width: parent.width
-        height: parent.height / 2.6
-
+        width: parent.width/2
+        height: parent.width/2
+        Rectangle{
+            id: mask
+            width: parent.width
+            height: parent.height
+            radius: width/2
+            visible: false
+        }
         Image {
             id: profilePic
-            anchors.horizontalCenter: iconRect.horizontalCenter
-            anchors.bottom: iconRect.bottom
-            sourceSize.width: loginpage.width / 5.5
-            sourceSize.height: loginpage.height / 5.5
+            anchors.centerIn: parent
+
+//            sourceSize.width: loginpage.width / 5.5
+//            sourceSize.height: loginpage.height / 5.5
             source: "file:///C:/Users/zwp/Pictures/1.png"
+            visible: false
 
         }
+        OpacityMask{
+            anchors.fill: parent
+                   source: profilePic
+                   maskSource: mask
+        }
+
 
     }
     Rectangle{
