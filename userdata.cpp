@@ -119,6 +119,6 @@ void Userdata::change_password( QString telenum, QString newpassword)
         changeword+="' where username = '";
         changeword+=telenum;
         changeword+="'";
-        qDebug()<<changeword;
+      //  qDebug()<<changeword;
         query.exec(changeword);
 }

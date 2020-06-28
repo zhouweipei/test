@@ -35,12 +35,18 @@ Rectangle {
     Component {
         id: dragDelegate
         Rectangle {
+            color: "#F5F5DC"
+
             id: content
             anchors { left: parent.left; right: parent.right }
             height: column.implicitHeight +25
+            border.color: "#FFFFF0"
+            border.width: 2
             Row{
                 spacing: 5
                 Rectangle{
+                    radius: 5
+                    anchors.leftMargin: 5
                     width: content.width/4
                     height: content.height
                     Image {
@@ -67,10 +73,19 @@ Rectangle {
                             Text { text: '30'+'分钟'+"  ";font.pixelSize: 13}
                             Text { text: '1.5'+'km';font.pixelSize: 13}
                         }
-                        Row{
-                            Text { text: '起送￥ 15'+"  ";font.pixelSize: 12}
-                            Text { text: '配送￥2'+"  " ;font.pixelSize: 12}
-                            Text { text: '人均￥20' ;font.pixelSize: 12}
+                        Rectangle{
+                            width: parent.width/2
+                            height: parent.height/4
+                            color: "#ffff7f"
+                            border.color: "#e6fde4"
+                            Text {
+                                anchors.centerIn: parent
+                                text:model.modelData.info
+                                font.bold: true
+                                color: "#00ff53"
+                                font.pixelSize: 13
+                            }
+
                         }
                     }
                 }
@@ -78,7 +93,7 @@ Rectangle {
             MouseArea{
                 anchors.fill: parent
                 onClicked:{
-
+                   storePage.push("Test.qml",{businessName:model.modelData.name,businessInfo:model.modelData.info,businessImage:model.modelData.image})
                 }
             }
         }

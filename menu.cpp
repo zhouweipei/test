@@ -63,3 +63,56 @@ QList<QObject*> Menu::getmlist(QString business_name)
     emit signalmList(menuList);
     return menuList;
 }
+void Menu::delete_menu(QString Bname, QString name)
+{
+    QString menudata="Menu_Data_";
+    menudata+=Bname;
+    menudata+=".db";
+    menu_data=menuopen.initDatabase(menudata);
+    QSqlQuery query(menu_data);
+    QString del="delete from menu where dish_name='";
+    del+=name;
+    del+="'";
+    query.exec(del);
+    getmlist(Bname);
+}
+void Menu::increase_price(QString Bname,QString name, QString price)
+{
+    double intprice=price.toDouble();
+    intprice+=0.5;
+    QString new_price=QString::number(intprice);
+    QString menudata="Menu_Data_";
+    menudata+=Bname;
+    menudata+=".db";
+    menu_data=menuopen.initDatabase(menudata);
+    QString change="update menu set price='";
+    change+=new_price;
+    change+="' where dish_name='";
+    change+=name;
+    change+="'";
+    qDebug()<<change;
+    QSqlQuery query(menu_data);
+    query.exec(change);
+    getmlist(Bname);
+}
+void Menu::decrease_price(QString Bname, QString name, QString price)
+{
+    double intprice=price.toDouble();
+    //qDebug()<<intprice;
+    intprice-=0.5;
+   // qDebug()<<intprice;
+    QString new_price=QString::number(intprice);
+    QString menudata="Menu_Data_";
+    menudata+=Bname;
+    menudata+=".db";
+    menu_data=menuopen.initDatabase(menudata);
+    QString change="update menu set price='";
+    change+=new_price;
+    change+="' where dish_name='";
+    change+=name;
+    change+="'";
+    qDebug()<<change;
+    QSqlQuery query(menu_data);
+    query.exec(change);
+    getmlist(Bname);
+}

@@ -1,9 +1,10 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
-import QtQuick.Dialogs 1.3
+import QtQuick.Dialogs 1.2
 import Business 1.0
 import Menu 1.0
+import QtQuick.Controls.Material 2.2
 
 Item {
     property string businessName
@@ -37,9 +38,11 @@ Item {
             }
         }
         Rectangle{
-            anchors.top: row.bottom
+       //     anchors.top: row.bottom
             Image {
                 id: imageView
+                x: 0
+                y: 40
                 width: 150
                 height: 104
                 source: ""
@@ -47,14 +50,14 @@ Item {
             }
             TextField {
                 id: price
-                y: 8
+                y: 42
                 anchors.left: imageView.right
                 anchors.leftMargin: 54
                 placeholderText: qsTr("请输入价格")
                 font.pixelSize: 12
             }
             RowLayout{
-                y: 54
+                y: 88
                 width: 200
                 height: 43
                 anchors.leftMargin: 54
@@ -113,14 +116,16 @@ Item {
         width: parent.width
         height: parent.height
         anchors.rightMargin: 0
-        anchors.bottomMargin: -177
+        anchors.bottomMargin: -190
         anchors.leftMargin: 0
-        anchors.topMargin: 177
+        anchors.topMargin: 190
         delegate: listDelegate
+        spacing: 5
     }
     Component{
         id:listDelegate
         Rectangle{
+            border.color: "lightblue"
             id:listItem
             width: menuList.width
             height: 50
@@ -137,17 +142,17 @@ Item {
                 id: content
                 anchors.top: parent.top
                 anchors.left: pic.right
-                anchors.leftMargin: 30
+                anchors.leftMargin: 5
                 anchors.topMargin: 15
                 width: parent.width - pic.width - 50
                 height: parent.height
-                spacing: 1
+                spacing: 5
                 Text {
                     id: textname
                     font.family: "microsoft yahei"
                     font.pointSize: 12
                     height: parent.height
-                    width: parent.width - delBtn.width
+                    width:parent.width/5
                     text: model.modelData.name
                     color: "green"
                     verticalAlignment: Text.AlignVCenter
@@ -155,11 +160,10 @@ Item {
                 Text {
                     id: textinfo
                     font.family: "microsoft yahei"
-                    font.pointSize: 12
+                    font.pointSize: 5
                     height: parent.height
-                    width: parent.width - delBtn.width
+                    width:parent.width/5
                     text: model.modelData.ingredients
-                    color: "green"
                     verticalAlignment: Text.AlignVCenter
                 }
 
@@ -168,73 +172,43 @@ Item {
                     font.family: "microsoft yahei"
                     font.pointSize: 12
                     height: parent.height
-                    width: parent.width - delBtn.width
-                    text: '$' + model.modelData.price
-                    font.bold: true
-                    color: "green"
+                    width:parent.width/5
+                    text: '￥' + model.modelData.price
+                    color: "red"
                     verticalAlignment: Text.AlignVCenter
                 }
-                Text {
-                    id: set
-                    text: qsTr("<⭐>")
+                Text{
+                    font.pointSize: 20
+                    text: "+"
+                    color: "red"
+                    font.bold: true
+                    height: parent.height
+                    width:parent.width/5
                     MouseArea{
-                        property point clickPos: "0,0"
                         anchors.fill: parent
-                        onPressed: {
-                            clickPos  = Qt.point(mouse.x,mouse.y);
-                        }
-                        onReleased: {
-                            var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
-                            if ((delta.x < 0) && (aBtnShow.running === false) && (delBtn.width == 0)){
-                                aBtnShow.start();
-                            }else if (aBtnHide.running === false && (delBtn.width > 0)){
-                                aBtnHide.start();
-                            }
-                        }
+                        onClicked: menu.increase_price(businessName,textname.text,model.modelData.price)
                     }
                 }
-            }
-            Rectangle{
-                color: "#AAAAAA"
-                height: 1
-                width: parent.width
-                anchors.bottom: parent.bottom
-            }
-            Rectangle{
-                id: delBtn
-                height: parent.height
-                width: 0
-                color: "#EE4040"
-                anchors.right: parent.right
-                Text {
-                    font.family: "microsoft yahei"
-                    font.pointSize: 12
-                    anchors.centerIn: parent
-                    text: qsTr("删除")
-                    color: "#ffffff"
-                }
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: {
-
+                Text{
+                    font.pointSize: 20
+                    text: "-"
+                    color: "red"
+                    font.bold: true
+                    height: parent.height
+                    width:parent.width/5
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: menu.decrease_price(businessName,textname.text,model.modelData.price)
                     }
                 }
-            }
-            PropertyAnimation{
-                id: aBtnShow
-                target: delBtn
-                property: "width"
-                duration: 100
-                from: 0
-                to: 60
-            }
-            PropertyAnimation{
-                id: aBtnHide
-                target: delBtn
-                property: "width"
-                duration: 100
-                from: 0
-                to: 60
+                Rectangle{
+                    height: width
+                    width:parent.width/10
+                    Image{
+                        anchors.verticalCenter: parent.verticalCenter
+                        source:"file:///F:/text/fanfou/images/del.png"
+                    }
+                }               
             }
         }
     }
