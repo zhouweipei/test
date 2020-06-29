@@ -83,7 +83,7 @@ Page{
                             }else
                              if(user.compare_login(username.text,telenum.text,password.text)){
                                 console.log("登录成功")
-
+                                login.push("Personalpage.qml",{userName:username.text,userTel:telenum.text})
                              }else{
                                  messageDialog1.open()
                              }

@@ -12,7 +12,11 @@ public:
 
 private:
     int num;
+    QString dishName;
+    int totalprice;
     QTime m_time;
+    QString username;
+    QString businessname;
 
 };
 

@@ -28,7 +28,7 @@ ApplicationWindow {
         //--------》》》》
         Component.onCompleted: {
             myModel.append({"modelText":"首页","modelColor":"#000000","modelColorG":"#148014","modelSrc":"qrc:/images/Chat_MsgRecord.svg", "modelSrcG": "qrc:/images/Chat_MsgRecordG.svg"})
-            myModel.append({ "modelText": "订单", "modelColor": "#000000", "modelColorG": "#148014", "modelSrc": "qrc:/images/Chat_FriendManager.svg", "modelSrcG": "qrc:/images/Chat_FriendManagerG.svg"})
+            //myModel.append({ "modelText": "订单", "modelColor": "#000000", "modelColorG": "#148014", "modelSrc": "qrc:/images/Chat_FriendManager.svg", "modelSrcG": "qrc:/images/Chat_FriendManagerG.svg"})
             myModel.append({ "modelText": "我的", "modelColor": "#000000", "modelColorG": "#148014", "modelSrc": "qrc:/images/Main_P2PChat.svg", "modelSrcG": "qrc:/images/Main_P2PChatG.svg"})
            // myModel.append({ "modelText": "我的", "modelColor": "#000000", "modelColorG": "#148014", "modelSrc": "qrc:/images/Main_P2PChat.svg", "modelSrcG": "qrc:/images/Main_P2PChatG.svg"})
         }
@@ -53,11 +53,7 @@ ApplicationWindow {
 //            id:testmodel
 //            Test{}
 //        }
-        Rectangle{
 
-            color: "blue"
-
-        }
         StackView{
             id:login
             initialItem: loginPage
