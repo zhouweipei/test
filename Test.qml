@@ -270,8 +270,6 @@ Item {
                 anchors.topMargin: 28
                 onClicked: {
                     element5.text++
-                    console.log(element5.text)
-                    my_model.append({"num":element5.text})
                 }
             }
         }
@@ -291,6 +289,7 @@ Item {
         y: 428
         width: 266
         height: 44
+        color: "#322222"
         radius: 10
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 10
