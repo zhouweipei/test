@@ -71,6 +71,12 @@ Rectangle{
             id: element3
             text: qsTr("修改密码")
             font.pixelSize: 12
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    login.push("Signup.qml")
+                }
+            }
         }
 
         Text {

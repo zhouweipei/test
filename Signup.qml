@@ -1,21 +1,13 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
+import QtQuick.Dialogs 1.2
 import Userdata 1.0
 
 Item {
-
-    TextField {
-        id: username
-        x: 131
-        y: 105
-        width: 365
-        height: 20
-        font.pixelSize: 12
-        placeholderText: qsTr("用户名")
+    Userdata{
+        id:user
     }
-
-
     TextField {
         id: telenum
         x: 131
@@ -23,7 +15,7 @@ Item {
         width: 365
         height: 20
         font.pixelSize: 12
-        placeholderText: qsTr("电话号码")
+        placeholderText: qsTr("请输入电话号码")
     }
 
     TextField {
@@ -33,26 +25,25 @@ Item {
         width: 365
         height: 20
         font.pixelSize: 12
-        placeholderText: qsTr("密码")
+        placeholderText: qsTr("请输入密码")
     }
 
     Button {
         id: regist_button
         x: 221
         y: 275
-        text: qsTr("注册")
+        text: qsTr("修改")
         onClicked: {
-
-            if(user.isSignup(username.text))
-            {
-                console.log("用户已存在")
-
-            }else{
-                user.registInfo(username.text,telenum.text,password.text)
-                console.log("注册成功")
-                loginpage.pop()
-            }
+            user.change_password(telenum.text,password.text)
+            messageDialog.open()
+            login.pop()
         }
+    }
+    MessageDialog{
+        id:messageDialog
+        text: "修改成功"
+        icon:StandardIcon.Warning
+        standardButtons: StandardButton.Ok
     }
 
 }
