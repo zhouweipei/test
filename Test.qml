@@ -226,11 +226,11 @@ Item {
                 anchors.topMargin: 28
 
                 onClicked: {
-                    if(element5.text!=0)
+                    if(element10.text!=0)
                     {
 
-                        element5.text--
-                       var amount= element5.text
+                        element10.text--
+                       var amount= element10.text
                     }
                     console.log(amount)
                 }
@@ -247,14 +247,14 @@ Item {
                 anchors.topMargin: 22
 
                 Text {
-                    id: element5
+                    id: element10
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
                     anchors.fill: parent
                     font.pixelSize: 12
                     MouseArea{
                         anchors.fill: parent
-                        onClicked: console.log(element5.text)
+                        onClicked: console.log(element10.text)
                     }
                 }
 
@@ -269,10 +269,11 @@ Item {
                 anchors.top: parent.top
                 anchors.topMargin: 28
                 onClicked: {
-                    element5.text++
+                    element10.text++
                 }
             }
         }
+
 
     }
     Connections{
@@ -307,7 +308,7 @@ Item {
             anchors.right: parent.right
             anchors.rightMargin: 0
             onClicked: {
-
+                storePage.push("Orderpage.qml")
             }
         }
 //        Repeater{
@@ -320,9 +321,9 @@ Item {
                 anchors.leftMargin: 51
                 anchors.top: parent.top
                 anchors.topMargin: 16
-                font.pixelSize: 12
-                text: "name"
-
+                font.pixelSize: 20
+                text: "￥"
+                color: "red"
             }
         //}
     }

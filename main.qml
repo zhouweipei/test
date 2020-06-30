@@ -14,6 +14,7 @@ ApplicationWindow {
         id:business
         Component.onCompleted: {
             business.getblist()
+            console.log(user.username)
         }
     }
     visible: true

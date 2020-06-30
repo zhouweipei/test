@@ -28,5 +28,6 @@
         <file>Personalpage.qml</file>
         <file>BussinessManage.qml</file>
         <file>MenuManage.qml</file>
+        <file>Orderpage.qml</file>
     </qresource>
 </RCC>
