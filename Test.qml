@@ -66,7 +66,7 @@ Item {
 
         Text {
             id: element
-            width: parent.width/5*3
+            width: parent.width/5
 
             height: 38
             text: businessName
@@ -93,6 +93,17 @@ Item {
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: 12
+        }
+
+        Button {
+            id: button2
+            width: 58
+            height: 40
+            text: qsTr("关注")
+            anchors.left: element.right
+            anchors.leftMargin: 77
+            anchors.top: parent.top
+            anchors.topMargin: 5
         }
     }
     Rectangle {
@@ -308,7 +319,7 @@ Item {
             anchors.right: parent.right
             anchors.rightMargin: 0
             onClicked: {
-                storePage.push("Orderpage.qml")
+                storePage.push("Orderpage.qml",{businessName:businessName})
             }
         }
 //        Repeater{
@@ -339,10 +350,11 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;autoSize:true;height:480;width:640}D{i:3;anchors_height:480}D{i:5;anchors_y:8}
-D{i:10;anchors_x:19}D{i:4;anchors_x:19}D{i:14;anchors_x:0}D{i:11;anchors_x:0}D{i:15;anchors_x:0;anchors_y:0}
-D{i:18;anchors_x:198;anchors_y:55}D{i:19;anchors_x:438;anchors_y:23}D{i:17;anchors_x:192;anchors_y:37}
-D{i:16;anchors_x:154;anchors_y:17}D{i:25;anchors_width:65;anchors_x:158;anchors_y:4}
-D{i:26;anchors_height:12;anchors_width:58;anchors_x:51;anchors_y:16}
+    D{i:0;autoSize:true;height:480;width:640}D{i:3;anchors_height:480}D{i:10;anchors_x:19}
+D{i:11;anchors_height:40;anchors_x:538;anchors_y:25}D{i:5;anchors_y:8}D{i:4;anchors_x:19}
+D{i:15;anchors_x:0}D{i:12;anchors_x:0}D{i:16;anchors_x:0;anchors_y:0}D{i:17;anchors_x:154;anchors_y:17}
+D{i:20;anchors_x:438;anchors_y:23}D{i:27;anchors_height:12;anchors_width:58;anchors_x:51;anchors_y:16}
+D{i:26;anchors_width:65;anchors_x:158;anchors_y:4}D{i:19;anchors_x:198;anchors_y:55}
+D{i:18;anchors_x:192;anchors_y:37}
 }
 ##^##*/

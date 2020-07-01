@@ -2,7 +2,14 @@ import QtQuick 2.0
 import QtQuick.Controls 2.1
 import Business 1.0
 Rectangle {
+    id: rectangle
     property bool refreshFlag: false
+    function getRandomNum(Min,Max)
+    {
+        var Range = Max - Min;
+        var Rand = Math.random();
+        return(Min + Math.round(Rand * Range));
+    }
     Business{
         id:business
     }
@@ -32,6 +39,7 @@ Rectangle {
             }
         }
     }
+
     Component {
         id: dragDelegate
         Rectangle {
@@ -68,10 +76,10 @@ Rectangle {
                             font.bold: true
                         }
                         Row{
-                            Text { text:'☆ 4.3 ';font.pixelSize: 13}
-                            Text { text: '月售' + '1234'+"              " ;font.pixelSize: 13}
-                            Text { text: '30'+'分钟'+"  ";font.pixelSize: 13}
-                            Text { text: '1.5'+'km';font.pixelSize: 13}
+                            Text { text:'☆ '+getRandomNum(2,5)+"  ";font.pixelSize: 13}
+                            Text { text: '月售' + getRandomNum(100,500)+"              " ;font.pixelSize: 13}
+                            Text { text:  getRandomNum(30,50)+'分钟'+"  ";font.pixelSize: 13}
+                            Text { text:  getRandomNum(1,3)+'km';font.pixelSize: 13}
                         }
                         Rectangle{
                             width: parent.width/2
@@ -100,9 +108,14 @@ Rectangle {
     }
     Component.onCompleted: {
         business.getblist()
+
     }
     ListView {
         id: view
+        anchors.rightMargin: 0
+        anchors.bottomMargin: 0
+        anchors.leftMargin: 0
+        anchors.topMargin: 182
         anchors { fill: parent; margins: 2 }
         delegate: dragDelegate
         spacing: 10
@@ -126,5 +139,12 @@ Rectangle {
             view.model=data;
         }
     }
+
 }
 
+
+/*##^##
+Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+##^##*/

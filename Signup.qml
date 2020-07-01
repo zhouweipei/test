@@ -25,7 +25,7 @@ Item {
         width: 365
         height: 20
         font.pixelSize: 12
-        placeholderText: qsTr("请输入密码")
+        placeholderText: qsTr("请输入新密码")
     }
 
     Button {

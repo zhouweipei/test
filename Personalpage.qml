@@ -6,7 +6,6 @@ Rectangle{
     property string userName
     property string userTel
     id: rectangle
-    anchors.fill: parent
     
     Image {
         id: image
@@ -64,6 +63,12 @@ Rectangle{
             id: element2
             text: qsTr("我的订单")
             font.pixelSize: 12
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                     login.push("Signin.qml")
+                }
+            }
         }
 
         Text {

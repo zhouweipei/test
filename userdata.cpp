@@ -116,7 +116,7 @@ void Userdata::change_password( QString telenum, QString newpassword)
     QSqlQuery query(user_registdata);
         QString changeword="update user set password='";
         changeword+=newpassword;
-        changeword+="' where username = '";
+        changeword+="' where telenum = '";
         changeword+=telenum;
         changeword+="'";
       //  qDebug()<<changeword;
