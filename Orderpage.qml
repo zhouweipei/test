@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
+
 Item {
     property string businessName
     id: order
@@ -44,7 +45,7 @@ Item {
             id: label1
             width: 90
             height: 25
-            text: qsTr("周伟培 先生")
+            text: qsTr("彭康 先生")
             anchors.left: parent.left
             anchors.leftMargin: 8
             anchors.top: label.bottom
@@ -57,7 +58,7 @@ Item {
             id: label2
             width: 160
             height: 25
-            text: qsTr("13452797144")
+            text: qsTr("18225314300")
             anchors.top: label.bottom
             anchors.topMargin: 6
             anchors.left: label1.right

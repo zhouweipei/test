@@ -24,20 +24,7 @@ QString Business::info() const
     return brief_introduction;
 }
 
-void Business::addBusiness(QString name,QString image, QString info)
-{
-    business_name=name;
-    m_image=image;
-    brief_introduction=info;
-    business_data=businssopen.initDatabase("business_data.db");
-    QSqlQuery add_businessquery(business_data);
-    add_businessquery.exec("create table businessdata (businessname varchar(20) ,business_info varchar(50),business_image varchar(50))");
-    add_businessquery.prepare("insert into businessdata (businessname,business_info,business_image) values(?,?,?)");
-    add_businessquery.addBindValue(business_name);
-    add_businessquery.addBindValue(brief_introduction);
-    add_businessquery.addBindValue(m_image);
-    add_businessquery.exec();
-}
+
 //登录
 bool Business::login(QString name, QString password)
 {
@@ -100,6 +87,20 @@ void Business::addmenu(QString Bname ,QString name, QString ingredients, QString
     query1.addBindValue(m_price);
     qDebug()<<dish_name<<m_ingredients<<m_price;
     query1.exec();
+}
+void Business::addBusiness(QString name,QString image, QString info)
+{
+    business_name=name;
+    m_image=image;
+    brief_introduction=info;
+    business_data=businssopen.initDatabase("business_data.db");
+    QSqlQuery add_businessquery(business_data);
+    add_businessquery.exec("create table businessdata (businessname varchar(20) ,business_info varchar(50),business_image varchar(50))");
+    add_businessquery.prepare("insert into businessdata (businessname,business_info,business_image) values(?,?,?)");
+    add_businessquery.addBindValue(business_name);
+    add_businessquery.addBindValue(brief_introduction);
+    add_businessquery.addBindValue(m_image);
+    add_businessquery.exec();
 }
 QList<QObject*> Business::getblist()
 {

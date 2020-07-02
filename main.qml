@@ -50,11 +50,6 @@ ApplicationWindow {
             id:storeModel
             Test1{}
         }
-//        Component{
-//            id:testmodel
-//            Test{}
-//        }
-
         StackView{
             id:login
             initialItem: loginPage

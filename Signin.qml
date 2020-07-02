@@ -21,6 +21,7 @@ Item {
         anchors.topMargin: 36
         anchors.fill: parent
         model: StoreList{}
+        spacing: 10
         delegate:  Rectangle {
             id: rectangle
             x: 0

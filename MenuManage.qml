@@ -208,6 +208,10 @@ Item {
                         anchors.verticalCenter: parent.verticalCenter
                         source:"file:///F:/text/fanfou/images/del.png"
                     }
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: menu.delete_menu(businessName,textname.text)
+                    }
                 }               
             }
         }

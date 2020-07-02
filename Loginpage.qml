@@ -113,6 +113,13 @@ Page{
                         icon:StandardIcon.Warning
                         standardButtons: StandardButton.Ok
                     }
+                    MessageDialog{
+                        id:messageDialog4
+                        text: "输入有误"
+                        icon:StandardIcon.Warning
+                        standardButtons: StandardButton.Ok
+                    }
+
 
                     Button {
                         text: "注册"
@@ -136,7 +143,12 @@ Page{
                     Layout.fillWidth: true
                     text: "管理员登录"
                     onClicked: {
-                    login.push("BussinessManage.qml")
+                        if(username.text=="Admin"&&telenum.text=="Admin"&&password.text=="Admin")
+                        {
+                            login.push("BussinessManage.qml")
+                        }else{
+                            messageDialog4.open()
+                        }
                     }
                 }
             }
